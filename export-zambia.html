@@ -113,8 +113,12 @@
   .stock-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:52px; }
   .stock-card{ border-radius:var(--radius); overflow:hidden; background:var(--bg-alt); transition:transform .25s ease, box-shadow .25s ease; }
   .stock-card:hover{ transform:translateY(-4px); box-shadow:var(--card-shadow); }
-  .stock-thumb{ height:110px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--accent) 8%, var(--bg-alt)); }
+  .stock-thumb{ height:140px; position:relative; overflow:hidden; background:var(--bg-alt); }
   .stock-thumb svg{ width:64px; height:44px; }
+  .stock-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .sold-ribbon{ position:absolute; top:14px; right:-34px; transform:rotate(35deg); background:var(--accent); color:var(--accent-contrast); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:4px 40px; }
+  .stock-card.is-sold .price{ text-decoration:line-through; color:var(--text-soft); }
+  .stock-card.is-sold .stock-thumb img{ filter:grayscale(0.5); opacity:0.85; }
   .stock-body{ padding:18px 20px 22px; }
   .stock-body .make{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-soft); }
   .stock-body h4{ font-size:16.5px; font-weight:650; margin-top:6px; }
@@ -243,9 +247,9 @@
         <h2>Truck types buyers ask us for.</h2>
       </div>
       <div class="type-grid">
-        <div class="type-card"><span class="n">01</span><h4>Heavy tippers</h4><p>High-payload tippers built for continuous Copperbelt mining and quarry work.</p></div>
-        <div class="type-card"><span class="n">02</span><h4>Tractor units</h4><p>6x2 and 6x4 units for cross-border haulage between Zambia, Zimbabwe and neighbouring markets.</p></div>
-        <div class="type-card"><span class="n">03</span><h4>Rigid trucks</h4><p>18–26 tonne rigids for local distribution and mine-site logistics.</p></div>
+        <div class="type-card"><span class="n">01</span><h4>Heavy tippers</h4><p>Isuzu and Hino are the standard for continuous Copperbelt mining work — heavy-duty European tippers also available.</p></div>
+        <div class="type-card"><span class="n">02</span><h4>Tractor units</h4><p>6x2 and 6x4 units for cross-border haulage — Volvo and Scania for the heaviest loads.</p></div>
+        <div class="type-card"><span class="n">03</span><h4>Rigid trucks</h4><p>18–26 tonne rigids for local distribution and mine-site logistics — Fuso and European rigids in stock.</p></div>
       </div>
     </div>
   </section>
@@ -256,20 +260,7 @@
         <p class="eyebrow">Available Now</p>
         <h2>Current stock suited to Zambia &amp; Zimbabwe.</h2>
       </div>
-      <div class="stock-grid">
-        <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Scania R520 V8 tractor unit"><rect x="8" y="26" width="58" height="22" fill="var(--text-soft)"/><rect x="12" y="12" width="28" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="58" cy="50" r="7" fill="var(--text)"/><rect x="66" y="28" width="26" height="20" fill="var(--accent-2)"/></svg></div>
-          <div class="stock-body"><span class="make">Scania · R520 V8</span><h4>2016 Tractor Unit</h4><p>High-power V8, well suited to heavy tipper-trailer combinations.</p><p class="price tnum">£1,234</p></div>
-        </div>
-        <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Volvo FH500 tractor unit"><rect x="8" y="28" width="60" height="20" fill="var(--text-soft)"/><rect x="14" y="14" width="26" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/><rect x="66" y="30" width="26" height="18" fill="var(--accent-2)"/></svg></div>
-          <div class="stock-body"><span class="make">Volvo · FH500</span><h4>2019 Tractor Unit</h4><p>Euro 6, 850,000km, full service history.</p><p class="price tnum">£29,000</p></div>
-        </div>
-        <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Fruehauf alloy tipper trailer"><rect x="10" y="24" width="70" height="20" fill="var(--accent)"/><rect x="10" y="18" width="70" height="8" fill="var(--text)"/><circle cx="26" cy="48" r="7" fill="var(--text)"/><circle cx="64" cy="48" r="7" fill="var(--text)"/></svg></div>
-          <div class="stock-body"><span class="make">Fruehauf · Ally Tipper</span><h4>2015 Tipper Trailer</h4><p>Lightweight alloy body for mining and quarry work.</p><p class="price tnum">£15,950</p></div>
-        </div>
-      </div>
+      <div class="stock-grid" data-stock-mount></div>
     </div>
   </section>
 
@@ -331,6 +322,7 @@
     </div>
   </footer>
 
+<script src="assets/stock.js"></script>
 <script>
 (function(){
   var els = document.querySelectorAll('.reveal');

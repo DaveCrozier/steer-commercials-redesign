@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Stock Manager | Steer Commercials</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23c85a2a'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#ffffff; --bg-alt:#f5f5f7; --text:#1d1d1f; --text-soft:#6e6e73; --line:#d2d2d7;
+    --accent:#c85a2a; --accent-contrast:#ffffff; --accent-2:#1f7a6c;
+    --good:#1f7a4c; --good-bg:#e6f3ec; --warn:#b9862c; --warn-bg:#fbf1de;
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+    --font-mono:ui-monospace,"SF Mono",Consolas,"Cascadia Code",monospace;
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#000000; --bg-alt:#161617; --text:#f5f5f7; --text-soft:#a1a1a6; --line:#333335;
+      --accent:#ef8a52; --accent-contrast:#1d1d1f; --accent-2:#49b3a2;
+      --good:#4cc78a; --good-bg:#0f2b1d; --warn:#e0b45c; --warn-bg:#2e2410; }
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  a{ color:var(--accent-2); }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 24px 100px; }
+  h1,h2,h3{ font-weight:650; letter-spacing:-0.01em; margin:0; }
+  .tnum{ font-variant-numeric:tabular-nums; }
+
+  header.top{ border-bottom:1px solid var(--line); padding:20px 0; margin-bottom:36px; }
+  header.top .wrap{ display:flex; justify-content:space-between; align-items:center; padding-bottom:0; }
+  .wordmark{ font-size:15px; font-weight:650; text-decoration:none; color:var(--text); display:flex; align-items:center; gap:10px; }
+  .wordmark img{ height:26px; }
+  .tag-pill{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; background:var(--bg-alt); border:1px solid var(--line); padding:4px 10px; border-radius:980px; color:var(--text-soft); }
+
+  .intro{ background:var(--bg-alt); border-radius:var(--radius); padding:22px 26px; margin-bottom:36px; font-size:14.5px; color:var(--text-soft); line-height:1.6; }
+  .intro b{ color:var(--text); }
+
+  section{ margin-bottom:44px; }
+  section > h2{ font-size:20px; margin-bottom:6px; }
+  section > p.sub{ color:var(--text-soft); font-size:13.5px; margin:0 0 20px; }
+
+  /* inventory table */
+  .inv-list{ display:flex; flex-direction:column; gap:10px; }
+  .inv-row{ display:grid; grid-template-columns:56px 1fr auto auto; gap:16px; align-items:center; background:var(--bg-alt); border-radius:12px; padding:10px 14px; }
+  .inv-row img{ width:56px; height:42px; object-fit:cover; border-radius:6px; background:var(--line); }
+  .inv-info b{ display:block; font-size:14.5px; }
+  .inv-info span{ display:block; font-size:12.5px; color:var(--text-soft); margin-top:2px; }
+  .status-badge{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:4px 10px; border-radius:980px; white-space:nowrap; }
+  .status-badge.available{ color:var(--good); background:var(--good-bg); }
+  .status-badge.sold{ color:var(--warn); background:var(--warn-bg); }
+  .row-actions{ display:flex; gap:8px; }
+  .btn{ font-size:12.5px; font-weight:600; padding:7px 12px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--text); cursor:pointer; white-space:nowrap; }
+  .btn:hover{ border-color:var(--text-soft); }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:var(--accent-contrast); }
+  .btn.danger{ color:#b23b2e; }
+  .btn.block{ width:100%; padding:12px; font-size:14px; }
+  .empty-note{ color:var(--text-soft); font-size:14px; padding:20px; text-align:center; }
+
+  /* form */
+  .form-card{ background:var(--bg-alt); border-radius:var(--radius); padding:26px; }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field.full{ grid-column:1 / -1; }
+  .field label{ font-size:12px; font-weight:600; color:var(--text-soft); text-transform:uppercase; letter-spacing:0.03em; }
+  .field input, .field select, .field textarea{
+    font-family:var(--font); font-size:14.5px; padding:10px 12px; border-radius:8px; border:1px solid var(--line);
+    background:var(--bg); color:var(--text);
+  }
+  .field textarea{ resize:vertical; min-height:64px; }
+  .form-actions{ display:flex; gap:10px; margin-top:20px; }
+
+  /* publish panel */
+  .publish-card{ border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+  .publish-card textarea{ width:100%; min-height:180px; font-family:var(--font-mono); font-size:12px; padding:14px; border-radius:10px; border:1px solid var(--line); background:var(--bg-alt); color:var(--text); resize:vertical; }
+  .publish-actions{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+  ol.steps{ margin:18px 0 0; padding-left:20px; font-size:14px; color:var(--text-soft); line-height:1.8; }
+  ol.steps b{ color:var(--text); }
+  .dirty-flag{ display:none; align-items:center; gap:8px; background:var(--warn-bg); color:var(--warn); font-size:13px; font-weight:600; padding:10px 16px; border-radius:10px; margin-bottom:16px; }
+  .dirty-flag.show{ display:flex; }
+  .copied-note{ font-size:12.5px; color:var(--good); margin-left:6px; opacity:0; transition:opacity .2s; }
+  .copied-note.show{ opacity:1; }
+
+  @media (max-width:640px){
+    .form-grid{ grid-template-columns:1fr; }
+    .inv-row{ grid-template-columns:44px 1fr; grid-template-areas:"img info" "actions actions"; }
+    .inv-row .status-badge{ grid-area:info; justify-self:start; margin-top:6px; }
+    .row-actions{ grid-area:actions; margin-top:10px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="wordmark" href="index.html"><img src="img/logo.png" alt="Steer Commercials">Steer Commercials</a>
+      <span class="tag-pill">Stock Manager</span>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <div class="intro">
+      <b>How this works:</b> everything below happens in your browser only — nothing is saved automatically. When you're happy with your changes, use the <b>Publish</b> panel at the bottom to copy the updated file and paste it into GitHub. The live site updates within about a minute of committing. This page isn't linked from the main site and requires no login to view, but only people with write access to the GitHub repository can actually publish changes — so your real stock list is protected at the GitHub level either way.
+    </div>
+
+    <div class="dirty-flag" id="dirtyFlag">⬤ You have unpublished changes — scroll down to Publish when ready.</div>
+
+    <section>
+      <h2>Current Stock</h2>
+      <p class="sub">Loaded live from <code>data/vehicles.json</code>.</p>
+      <div class="inv-list" id="invList"><p class="empty-note">Loading…</p></div>
+    </section>
+
+    <section>
+      <h2 id="formTitle">Add a Vehicle</h2>
+      <p class="sub">Fill this in, then click Add — it appears in the list above and in the Publish panel below.</p>
+      <div class="form-card">
+        <form id="vehicleForm">
+          <input type="hidden" id="f-id">
+          <div class="form-grid">
+            <div class="field"><label for="f-make">Make</label><input id="f-make" required placeholder="Volvo"></div>
+            <div class="field"><label for="f-model">Model</label><input id="f-model" required placeholder="FH500"></div>
+            <div class="field"><label for="f-category">Category</label>
+              <select id="f-category">
+                <option>Tractor Unit</option>
+                <option>Rigid</option>
+                <option>Tipper</option>
+                <option>Trailer</option>
+                <option>Miscellaneous</option>
+              </select>
+            </div>
+            <div class="field"><label for="f-year">Year</label><input id="f-year" type="number" min="1990" max="2030" placeholder="2019"></div>
+            <div class="field"><label for="f-km">Mileage (km, leave blank if N/A)</label><input id="f-km" type="number" min="0" placeholder="850000"></div>
+            <div class="field"><label for="f-price">Price in £ (leave blank for "On Request")</label><input id="f-price" type="number" min="0" placeholder="29000"></div>
+            <div class="field"><label for="f-photo">Photo path or URL</label><input id="f-photo" placeholder="img/stock/your-photo.jpg"></div>
+            <div class="field"><label for="f-status">Status</label>
+              <select id="f-status">
+                <option value="available">Available</option>
+                <option value="sold">Sold</option>
+              </select>
+            </div>
+            <div class="field full"><label for="f-desc">Description</label><textarea id="f-desc" placeholder="Full service history, alloy wheels, MOT until..."></textarea></div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="saveBtn">Add Vehicle</button>
+            <button type="button" class="btn" id="cancelBtn" style="display:none;">Cancel Edit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2>Publish</h2>
+      <p class="sub">This is the file that drives every page on the site — the homepage and all six country pages read from it live.</p>
+      <div class="publish-card">
+        <textarea id="jsonOutput" readonly></textarea>
+        <div class="publish-actions">
+          <button class="btn primary" id="copyBtn">Copy JSON</button>
+          <span class="copied-note" id="copiedNote">Copied ✓</span>
+          <a class="btn" id="githubBtn" href="#" target="_blank" rel="noopener">Open GitHub Editor ↗</a>
+        </div>
+        <ol class="steps">
+          <li>Click <b>Copy JSON</b> above.</li>
+          <li>Click <b>Open GitHub Editor</b> — it opens <code>data/vehicles.json</code> directly in GitHub, ready to edit.</li>
+          <li>Select all the existing text in that editor (Ctrl/Cmd+A) and paste over it.</li>
+          <li>Scroll down, add a short message like "Update stock", and click <b>Commit changes</b>.</li>
+          <li>The live site updates within about a minute.</li>
+        </ol>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+(function(){
+  var REPO_EDIT_URL = 'https://github.com/DaveCrozier/steer-commercials-redesign/edit/main/data/vehicles.json';
+  document.getElementById('githubBtn').href = REPO_EDIT_URL;
+
+  var vehicles = [];
+  var dirty = false;
+  var editingId = null;
+
+  var invList = document.getElementById('invList');
+  var jsonOutput = document.getElementById('jsonOutput');
+  var dirtyFlag = document.getElementById('dirtyFlag');
+  var form = document.getElementById('vehicleForm');
+  var formTitle = document.getElementById('formTitle');
+  var saveBtn = document.getElementById('saveBtn');
+  var cancelBtn = document.getElementById('cancelBtn');
+
+  function fmtPrice(v){ return (v === null || v === undefined || v === '') ? 'On Request' : '£' + Number(v).toLocaleString('en-GB'); }
+  function fmtKm(v){ return (v === null || v === undefined || v === '') ? '' : Number(v).toLocaleString('en-GB') + 'km'; }
+  function uid(){ return 'v-' + Math.random().toString(36).slice(2, 9); }
+
+  function setDirty(v){ dirty = v; dirtyFlag.classList.toggle('show', v); }
+
+  function renderList(){
+    if (!vehicles.length){
+      invList.innerHTML = '<p class="empty-note">No vehicles yet — add one below.</p>';
+      jsonOutput.value = '[]';
+      return;
+    }
+    invList.innerHTML = vehicles.map(function(v){
+      return '<div class="inv-row">' +
+        '<img src="' + (v.photo || '') + '" alt="" onerror="this.style.visibility=\'hidden\'">' +
+        '<div class="inv-info"><b>' + v.year + ' ' + v.make + ' ' + v.model + '</b><span>' + v.category + (fmtKm(v.km) ? ' · ' + fmtKm(v.km) : '') + ' · ' + fmtPrice(v.price) + '</span></div>' +
+        '<span class="status-badge ' + v.status + '">' + v.status + '</span>' +
+        '<div class="row-actions">' +
+          '<button class="btn" data-action="toggle" data-id="' + v.id + '">' + (v.status === 'sold' ? 'Mark Available' : 'Mark Sold') + '</button>' +
+          '<button class="btn" data-action="edit" data-id="' + v.id + '">Edit</button>' +
+          '<button class="btn danger" data-action="delete" data-id="' + v.id + '">Delete</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    jsonOutput.value = JSON.stringify(vehicles, null, 2);
+  }
+
+  invList.addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    var action = btn.getAttribute('data-action');
+    var v = vehicles.find(function(x){ return x.id === id; });
+    if (!v) return;
+
+    if (action === 'toggle'){
+      v.status = v.status === 'sold' ? 'available' : 'sold';
+      setDirty(true); renderList();
+    } else if (action === 'delete'){
+      if (confirm('Remove ' + v.make + ' ' + v.model + ' from the list? This only takes effect once you publish.')){
+        vehicles = vehicles.filter(function(x){ return x.id !== id; });
+        setDirty(true); renderList();
+      }
+    } else if (action === 'edit'){
+      editingId = id;
+      document.getElementById('f-id').value = v.id;
+      document.getElementById('f-make').value = v.make;
+      document.getElementById('f-model').value = v.model;
+      document.getElementById('f-category').value = v.category;
+      document.getElementById('f-year').value = v.year || '';
+      document.getElementById('f-km').value = v.km || '';
+      document.getElementById('f-price').value = v.price || '';
+      document.getElementById('f-photo').value = v.photo || '';
+      document.getElementById('f-status').value = v.status;
+      document.getElementById('f-desc').value = v.description || '';
+      formTitle.textContent = 'Edit Vehicle';
+      saveBtn.textContent = 'Save Changes';
+      cancelBtn.style.display = 'inline-block';
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  function resetForm(){
+    form.reset();
+    document.getElementById('f-id').value = '';
+    document.getElementById('f-category').value = 'Tractor Unit';
+    document.getElementById('f-status').value = 'available';
+    editingId = null;
+    formTitle.textContent = 'Add a Vehicle';
+    saveBtn.textContent = 'Add Vehicle';
+    cancelBtn.style.display = 'none';
+  }
+
+  cancelBtn.addEventListener('click', resetForm);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var entry = {
+      id: editingId || uid(),
+      make: document.getElementById('f-make').value.trim(),
+      model: document.getElementById('f-model').value.trim(),
+      category: document.getElementById('f-category').value,
+      year: document.getElementById('f-year').value ? parseInt(document.getElementById('f-year').value, 10) : null,
+      km: document.getElementById('f-km').value ? parseInt(document.getElementById('f-km').value, 10) : null,
+      price: document.getElementById('f-price').value ? parseInt(document.getElementById('f-price').value, 10) : null,
+      description: document.getElementById('f-desc').value.trim(),
+      photo: document.getElementById('f-photo').value.trim(),
+      status: document.getElementById('f-status').value,
+      dateAdded: new Date().toISOString().slice(0, 10)
+    };
+
+    if (editingId){
+      var idx = vehicles.findIndex(function(x){ return x.id === editingId; });
+      var existing = vehicles[idx];
+      entry.dateAdded = existing.dateAdded || entry.dateAdded;
+      vehicles[idx] = entry;
+    } else {
+      vehicles.unshift(entry);
+    }
+    setDirty(true);
+    renderList();
+    resetForm();
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    jsonOutput.select();
+    navigator.clipboard.writeText(jsonOutput.value).then(function(){
+      var note = document.getElementById('copiedNote');
+      note.classList.add('show');
+      setTimeout(function(){ note.classList.remove('show'); }, 1800);
+    });
+  });
+
+  window.addEventListener('beforeunload', function(e){
+    if (dirty){ e.preventDefault(); e.returnValue = ''; }
+  });
+
+  fetch('data/vehicles.json', { cache: 'no-store' })
+    .then(function(r){ return r.json(); })
+    .then(function(data){ vehicles = data; renderList(); })
+    .catch(function(){ invList.innerHTML = '<p class="empty-note">Could not load current stock — check data/vehicles.json exists.</p>'; });
+})();
+</script>
+</body>
+</html>

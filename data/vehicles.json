@@ -1,0 +1,80 @@
+[
+  {
+    "id": "volvo-fh500-a",
+    "make": "Volvo",
+    "model": "FH500",
+    "category": "Tractor Unit",
+    "year": 2019,
+    "km": 850000,
+    "price": 29000,
+    "description": "Alloy wheels and more, MOT until February 2027.",
+    "photo": "img/stock/volvo-fh500-a.jpg",
+    "status": "available",
+    "dateAdded": "2026-06-02"
+  },
+  {
+    "id": "volvo-fh500-b",
+    "make": "Volvo",
+    "model": "FH500",
+    "category": "Tractor Unit",
+    "year": 2019,
+    "km": 610000,
+    "price": 31995,
+    "description": "Fitted with tipping gear, alloy wheels and an onboard fridge.",
+    "photo": "img/stock/volvo-fh500-b.jpg",
+    "status": "available",
+    "dateAdded": "2026-05-18"
+  },
+  {
+    "id": "scania-r520",
+    "make": "Scania V8",
+    "model": "R520",
+    "category": "Tractor Unit",
+    "year": 2016,
+    "km": 540000,
+    "price": 1234,
+    "description": "Fitted with a Palfinger PK72002 crane (2005), leather interior, air conditioning, twin bunk, reversing camera, 10-tyre configuration.",
+    "photo": "img/stock/scania-r520.jpg",
+    "status": "available",
+    "dateAdded": "2026-04-30"
+  },
+  {
+    "id": "volvo-fm330",
+    "make": "Volvo",
+    "model": "FM330",
+    "category": "Rigid",
+    "year": 2016,
+    "km": 480000,
+    "price": 16450,
+    "description": "Long MOT, hi-roof sleeper cab, 10-tyre configuration, Moffett mounting kit, sat nav, rear camera.",
+    "photo": "img/stock/volvo-fm330.jpg",
+    "status": "available",
+    "dateAdded": "2026-04-11"
+  },
+  {
+    "id": "fruehauf-ally-tipper",
+    "make": "Fruehauf",
+    "model": "Ally Tipper",
+    "category": "Trailer",
+    "year": 2015,
+    "km": null,
+    "price": 15950,
+    "description": "Alloy tipper body, well maintained, tested and ready to work.",
+    "photo": "img/stock/fruehauf-ally-tipper.jpg",
+    "status": "available",
+    "dateAdded": "2026-03-22"
+  },
+  {
+    "id": "dennison-skelly",
+    "make": "Dennison",
+    "model": "Skelly",
+    "category": "Trailer",
+    "year": 2018,
+    "km": null,
+    "price": 7995,
+    "description": "Sliding skeletal trailer, MOT'd and ready to go.",
+    "photo": "img/stock/dennison-skelly.jpg",
+    "status": "available",
+    "dateAdded": "2026-03-01"
+  }
+]

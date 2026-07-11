@@ -11,6 +11,15 @@ Website for [Steer Commercials Sales & Exports Ltd](https://www.steercommercials
 - `export-nigeria.html`, `export-ghana.html` — West Africa destinations (right-hand traffic; LHD sourcing/conversion required)
 - `guide-roro-vs-container.html` — buyer's guide: RoRo vs container shipping
 - `guide-european-vs-japanese-trucks.html` — buyer's guide: European vs Japanese trucks
+- `admin.html` — stock manager (not linked publicly; bookmark the direct URL)
+
+## Managing stock
+
+Every page's "Latest Stock" / "Available Now" section pulls live from **`data/vehicles.json`** via `assets/stock.js` — there is one shared inventory list, not separate copies per page, so editing it once updates the whole site.
+
+**Easiest way — the Stock Manager:** open `admin.html` directly (e.g. `https://davecrozier.github.io/steer-commercials-redesign/admin.html`). Add a vehicle, mark one sold, or delete one, then use the **Publish** panel at the bottom: copy the JSON, click **Open GitHub Editor**, paste over the existing file content, and commit. The live site updates within about a minute. Nothing saves until that last step — the admin page itself has no backend, so publishing always goes through GitHub, and only people with write access to this repo can actually change what's live.
+
+**Direct way:** edit `data/vehicles.json` in GitHub's web editor by hand. Each vehicle is one object with `make`, `model`, `category`, `year`, `km`, `price`, `description`, `photo` (path under `img/stock/`), `status` (`"available"` or `"sold"`), and `dateAdded`. Delete an entry to remove it from the site entirely; sold vehicles stay visible with a "Sold" ribbon until removed.
 
 ## Notes on country-specific content
 

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Used Trucks for Sale & Export to Africa | Steer Commercials, Sheffield UK</title>
-<meta name="description" content="UK exporter of used trucks (lorries) — tippers, tractor units & trailers — to Kenya, Tanzania, Nigeria, Ghana, Zambia & Uganda. RHD or LHD-ready stock, RoRo & container shipping, full export documentation.">
+<meta name="description" content="UK exporter of used trucks (lorries) — Volvo, Scania, DAF, Isuzu, Hino, Fuso & Sinotruk — to Kenya, Tanzania, Nigeria, Ghana, Zambia & Uganda. RHD or LHD-ready stock, RoRo & container shipping.">
 <link rel="canonical" href="https://davecrozier.github.io/steer-commercials-redesign/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Used Trucks for Sale & Export to Africa | Steer Commercials, UK">
-<meta property="og:description" content="UK exporter of used trucks (lorries) to Kenya, Tanzania, Nigeria, Ghana, Zambia & Uganda. RHD or LHD-ready stock, RoRo & container shipping, full export documentation.">
+<meta property="og:description" content="UK exporter of used trucks (lorries) — European and Japanese brands — to Kenya, Tanzania, Nigeria, Ghana, Zambia & Uganda.">
 <meta property="og:url" content="https://davecrozier.github.io/steer-commercials-redesign/">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23c85a2a'/%3E%3Ctext x='50' y='66' font-size='58' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
@@ -133,8 +133,12 @@
   .stock-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:52px; }
   .stock-card{ border-radius:var(--radius); overflow:hidden; background:var(--bg-alt); transition:transform .25s ease, box-shadow .25s ease; }
   .stock-card:hover{ transform:translateY(-4px); box-shadow:var(--card-shadow); }
-  .stock-thumb{ height:120px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--accent) 8%, var(--bg-alt)); }
+  .stock-thumb{ height:150px; position:relative; overflow:hidden; background:var(--bg-alt); }
   .stock-thumb svg{ width:70px; height:48px; }
+  .stock-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .sold-ribbon{ position:absolute; top:14px; right:-34px; transform:rotate(35deg); background:var(--accent); color:var(--accent-contrast); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:4px 40px; }
+  .stock-card.is-sold .price{ text-decoration:line-through; color:var(--text-soft); }
+  .stock-card.is-sold .stock-thumb img{ filter:grayscale(0.5); opacity:0.85; }
   .stock-body{ padding:18px 20px 22px; }
   .stock-body .make{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-soft); }
   .stock-body h4{ font-size:17px; font-weight:650; margin-top:6px; }
@@ -321,22 +325,27 @@
         <p class="eyebrow">Latest Stock</p>
         <h2 style="font-size:clamp(28px,3.6vw,42px);">Every listing, properly described.</h2>
       </div>
+      <div class="stock-grid" data-stock-mount></div>
+
+      <p class="eyebrow" style="margin-top:64px;">Also In Stock</p>
+      <h3 style="font-size:20px; margin-top:10px; font-weight:650;">Japanese &amp; Chinese-brand alternatives</h3>
+      <p style="color:var(--text-soft); font-size:14.5px; margin-top:8px; max-width:56ch;">Same UK sourcing and inspection process, on the brands with the strongest parts networks across Africa.</p>
       <div class="stock-grid">
         <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Volvo FH500 tractor unit"><rect x="8" y="28" width="60" height="20" fill="var(--text-soft)"/><rect x="14" y="14" width="26" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/><rect x="66" y="30" width="26" height="18" fill="var(--accent-2)"/></svg></div>
-          <div class="stock-body"><span class="make">Volvo · FH500</span><h4>2019 Tractor Unit</h4><div class="specs"><span class="tnum">850,000km</span><span>·</span><span>Euro 6</span></div><p class="desc">Full service history, export-inspected, ready for corridor haulage.</p><p class="price tnum">£29,000</p></div>
+          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Isuzu FVZ tipper truck"><rect x="10" y="24" width="66" height="20" fill="var(--accent)"/><rect x="14" y="12" width="24" height="16" fill="var(--text)"/><circle cx="26" cy="48" r="7" fill="var(--text)"/><circle cx="62" cy="48" r="7" fill="var(--text)"/></svg></div>
+          <div class="stock-body"><span class="make">Isuzu · FVZ 1400</span><h4>2017 Tipper</h4><div class="specs"><span class="tnum">410,000km</span><span>·</span><span>6-cyl diesel</span></div><p class="desc">The most requested tipper brand for East African construction and quarry work — strong parts availability from Mombasa to Kampala.</p><p class="price tnum">£16,500</p></div>
         </div>
         <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Scania R520 V8 tractor unit"><rect x="8" y="26" width="58" height="22" fill="var(--text-soft)"/><rect x="12" y="12" width="28" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="58" cy="50" r="7" fill="var(--text)"/><rect x="66" y="28" width="26" height="20" fill="var(--accent-2)"/></svg></div>
-          <div class="stock-body"><span class="make">Scania · R520 V8</span><h4>2016 Tractor Unit</h4><div class="specs"><span class="tnum">540,000km</span><span>·</span><span>6x2</span></div><p class="desc">High-power V8, well suited to heavy tipper-trailer combinations.</p><p class="price tnum">£1,234</p></div>
+          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Hino Ranger FG rigid truck"><rect x="8" y="26" width="64" height="20" fill="var(--text-soft)"/><rect x="12" y="14" width="24" height="16" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/></svg></div>
+          <div class="stock-body"><span class="make">Hino · Ranger FG</span><h4>2018 Rigid / Tipper</h4><div class="specs"><span class="tnum">380,000km</span><span>·</span><span>6x4</span></div><p class="desc">A leading choice across East African fleets for reliability and fuel economy on mixed routes.</p><p class="price tnum">£17,950</p></div>
         </div>
         <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Fruehauf alloy tipper trailer"><rect x="10" y="24" width="70" height="20" fill="var(--accent)"/><rect x="10" y="18" width="70" height="8" fill="var(--text)"/><circle cx="26" cy="48" r="7" fill="var(--text)"/><circle cx="64" cy="48" r="7" fill="var(--text)"/></svg></div>
-          <div class="stock-body"><span class="make">Fruehauf · Ally Tipper</span><h4>2015 Tipper Trailer</h4><div class="specs"><span>Alloy body</span><span>·</span><span>Tri-axle</span></div><p class="desc">Lightweight tipper suited to construction and quarry work.</p><p class="price tnum">£15,950</p></div>
+          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Mitsubishi Fuso Fighter rigid truck"><rect x="10" y="26" width="62" height="20" fill="var(--accent-2)"/><rect x="14" y="14" width="24" height="16" fill="var(--text)"/><circle cx="26" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/></svg></div>
+          <div class="stock-body"><span class="make">Mitsubishi · Fuso Fighter</span><h4>2017 Rigid</h4><div class="specs"><span class="tnum">295,000km</span><span>·</span><span>4x2</span></div><p class="desc">A dependable mid-tonnage workhorse for local distribution and construction fleets.</p><p class="price tnum">£13,800</p></div>
         </div>
         <div class="stock-card">
-          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="DAF XF 105 tractor unit"><rect x="8" y="28" width="60" height="20" fill="var(--text-soft)"/><rect x="14" y="14" width="26" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/><rect x="66" y="30" width="26" height="18" fill="var(--accent-2)"/></svg></div>
-          <div class="stock-body"><span class="make">DAF · XF 105</span><h4>Tractor Unit</h4><div class="specs"><span>460bhp</span><span>·</span><span>6x2</span></div><p class="desc">Reliable long-distance unit with strong regional parts availability.</p><p class="price">On request</p></div>
+          <div class="stock-thumb"><svg viewBox="0 0 100 60" aria-label="Sinotruk HOWO A7 tractor unit"><rect x="8" y="28" width="60" height="20" fill="var(--text-soft)"/><rect x="14" y="14" width="26" height="18" fill="var(--text)"/><circle cx="24" cy="50" r="7" fill="var(--text)"/><circle cx="60" cy="50" r="7" fill="var(--text)"/><rect x="66" y="30" width="26" height="18" fill="var(--accent)"/></svg></div>
+          <div class="stock-body"><span class="make">Sinotruk · HOWO A7</span><h4>2019 Tractor Unit</h4><div class="specs"><span class="tnum">210,000km</span><span>·</span><span>6x4</span></div><p class="desc">A growing choice across West Africa for buyers prioritising lower purchase cost on regional haulage.</p><p class="price tnum">£19,200</p></div>
         </div>
       </div>
     </div>
@@ -375,9 +384,9 @@
 
   <section class="tight value-section reveal">
     <div class="wrap narrow">
-      <p class="eyebrow">Why European Stock</p>
-      <h2>Premium engineering. Prices that compete with new Japanese trucks.</h2>
-      <p class="sub">Isuzu, Hino and Fuso earned their reputation on parts availability, and that's real. But a well-maintained, UK-sourced Volvo, Scania or DAF gives you more power and a more comfortable cab for long-haul corridor work — at a used price that often undercuts a brand-new Japanese equivalent. It's not premium instead of affordable. Done right, it's both.</p>
+      <p class="eyebrow">Two Ranges, One Yard</p>
+      <h2>Premium European engineering, or the Isuzu and Hino brands your market already trusts.</h2>
+      <p class="sub">We stock both. A well-maintained, UK-sourced Volvo, Scania or DAF gives you more power and a more comfortable cab for long-haul corridor work, at a used price that often undercuts a brand-new equivalent. If parts availability on your route matters more, Isuzu, Hino, Fuso and Sinotruk stock is on the same yard, inspected the same way. Tell us the route and load, and we'll recommend the fit.</p>
       <a class="chev" style="margin-top:22px;" href="guide-european-vs-japanese-trucks.html">Compare European vs Japanese trucks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></a>
     </div>
   </section>
@@ -452,6 +461,7 @@
     </div>
   </footer>
 
+<script src="assets/stock.js"></script>
 <script>
 (function(){
   var els = document.querySelectorAll('.reveal');
