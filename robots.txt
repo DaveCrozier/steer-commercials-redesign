@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://davecrozier.github.io/steer-commercials-redesign/sitemap.xml
