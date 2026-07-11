@@ -7,11 +7,16 @@ Website for [Steer Commercials Sales & Exports Ltd](https://www.steercommercials
 ## Pages
 
 - `index.html` — homepage
-- `export-kenya.html` — Kenya export destination page
+- `export-kenya.html`, `export-tanzania.html`, `export-uganda.html`, `export-zambia.html` — East/Southern Africa destinations (RHD stock, matches local traffic)
+- `export-nigeria.html`, `export-ghana.html` — West Africa destinations (right-hand traffic; LHD sourcing/conversion required)
 - `guide-roro-vs-container.html` — buyer's guide: RoRo vs container shipping
+- `guide-european-vs-japanese-trucks.html` — buyer's guide: European vs Japanese trucks
 
-## Structure
+## Notes on country-specific content
 
-Each export destination (Kenya, Tanzania, Nigeria, Ghana, Zambia, Uganda) has its own landing page covering the relevant port, shipping corridor, import guidance and matched stock. Kenya is built out in full as the working example; the remaining markets follow the same template.
+Each destination page uses the vocabulary and facts relevant to that market rather than a single shared template:
 
-Buyer guides live alongside the destination pages and cover the practical questions exporters and importers actually search for — shipping methods, documentation, and market-specific import rules.
+- **Kenya, Tanzania, Uganda, Zambia & Zimbabwe** drive on the left — UK right-hand-drive stock matches as-is. Copy uses "lorry"/"lorries" alongside "truck," reflecting common East/Southern African usage.
+- **Nigeria and Ghana** drive on the right — right-hand-drive imports are restricted by law in both countries (Nigeria since 1973, Ghana under the Customs, Excise and Preventive (Management) Act). Both pages flag this explicitly and describe LHD sourcing/conversion rather than claiming RHD compatibility. Nigeria's copy also reflects local terminology ("Tokunbo," "UK Direct," "Naija-used").
+
+Import age limits and customs rules are hedged throughout ("confirm with your clearing agent") rather than stated as fixed facts, since these change and enforcement varies by port.
