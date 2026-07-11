@@ -73,6 +73,8 @@
   nav.top{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
   nav.top .wrap{ display:flex; align-items:center; justify-content:space-between; height:56px; }
   .wordmark{ font-size:16px; font-weight:650; letter-spacing:-0.01em; }
+  .wordmark.brand{ display:inline-flex; align-items:center; }
+  .brand-logo{ height:34px; width:auto; display:block; }
   .navlinks{ display:flex; gap:30px; font-size:13px; color:var(--text-soft); }
   .navlinks a:hover{ color:var(--text); }
   .pill{ font-size:13px; font-weight:600; padding:8px 18px; border-radius:980px; background:var(--accent); color:var(--accent-contrast); white-space:nowrap; }
@@ -103,24 +105,6 @@
   .stat-col b{ display:block; font-size:clamp(36px,4.6vw,56px); font-weight:650; letter-spacing:-0.02em; }
   .stat-col span{ display:block; margin-top:8px; font-size:14px; color:var(--invert-soft); }
 
-  /* serp compare */
-  .serp-section .head{ max-width:640px; margin:0 auto; }
-  .serp-section h2{ font-size:clamp(28px,3.6vw,42px); margin-top:14px; }
-  .serp-section p.sub{ color:var(--text-soft); font-size:17px; margin-top:16px; }
-  .serp-compare{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
-  .serp-label{ font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; }
-  .serp-label.before{ color:var(--text-soft); }
-  .serp-label.after{ color:var(--accent-2); }
-  .serp-card{ background:#ffffff; border:1px solid #dadce0; border-radius:14px; padding:22px 24px; box-shadow:0 1px 2px rgba(0,0,0,0.08); font-family:arial,sans-serif; }
-  .serp-card.old{ opacity:0.6; }
-  .serp-card .url-row{ display:flex; align-items:center; gap:10px; }
-  .serp-card .favicon{ width:24px; height:24px; border-radius:50%; background:var(--accent); flex:none; }
-  .serp-card .site{ color:#202124; font-size:13px; line-height:1.2; }
-  .serp-card .site .url{ color:#4d5156; font-size:12px; }
-  .serp-card .title{ color:#1a0dab; font-size:19px; margin-top:8px; line-height:1.3; }
-  .serp-card .desc{ color:#4d5156; font-size:14px; margin-top:6px; line-height:1.5; }
-  .serp-card .desc b{ color:#202124; font-weight:700; }
-
   /* destinations */
   .dest-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
   .dest-head h2{ font-size:clamp(28px,3.6vw,42px); margin-top:10px; max-width:16ch; }
@@ -131,12 +115,8 @@
   .dest-card .port{ font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-soft); }
   .dest-card h3{ font-size:23px; margin-top:10px; }
   .dest-card p{ font-size:14px; color:var(--text-soft); margin-top:10px; line-height:1.5; min-height:42px; }
-  .dest-card .tag{ display:inline-flex; align-items:center; gap:6px; margin-top:18px; font-size:12px; font-weight:600; color:var(--text-soft); }
   .dest-card.live{ background:var(--text); color:var(--bg); }
   .dest-card.live .port,.dest-card.live p{ color:color-mix(in srgb, var(--bg) 70%, var(--text-soft)); }
-  .dest-card.live .tag{ color:var(--accent); }
-  .dest-card.live .dot{ background:var(--accent); }
-  .dest-card .dot{ width:7px; height:7px; border-radius:50%; background:var(--text-soft); display:inline-block; }
   .also-serving{ margin-top:28px; font-size:14px; color:var(--text-soft); display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
   .also-serving span.badge{ border:1px solid var(--line); border-radius:980px; padding:6px 14px; font-size:13px; }
 
@@ -197,7 +177,7 @@
 
   @media (max-width:880px){
     .navlinks{ display:none; }
-    .stat-row,.serp-compare,.dest-grid,.steps,.stock-grid,.why-grid{ grid-template-columns:1fr 1fr; }
+    .stat-row,.dest-grid,.steps,.stock-grid,.why-grid{ grid-template-columns:1fr 1fr; }
     .stat-col{ border-left:none; border-top:1px solid var(--invert-line); padding:24px 0 0; }
     .stat-col:first-child{ border-top:none; }
     .steps::before{ display:none; }
@@ -215,7 +195,7 @@
 
   <nav class="top">
     <div class="wrap">
-      <a class="wordmark" href="#top">Steer Commercials</a>
+      <a class="wordmark brand" href="#top"><img class="brand-logo" src="img/logo.png" alt="Steer Commercials Sales & Exports Ltd"></a>
       <div class="navlinks">
         <a href="#stock">Stock</a>
         <a href="#destinations">Destinations</a>
@@ -261,34 +241,6 @@
     </div>
   </section>
 
-  <section class="serp-section reveal">
-    <div class="wrap">
-      <div class="head center">
-        <p class="eyebrow">On-Page SEO</p>
-        <h2>Search-ready, out of the box.</h2>
-        <p class="sub">The old homepage title and description said nothing about export or Africa. Now the page tells Google — and buyers — exactly what it's for.</p>
-      </div>
-      <div class="serp-compare">
-        <div>
-          <p class="serp-label before">Before</p>
-          <div class="serp-card old">
-            <div class="url-row"><div class="favicon"></div><div class="site">Steer Commercials Sales &amp; Exports Ltd<div class="url">https://www.steercommercials.com</div></div></div>
-            <div class="title">Quality Used Trucks Sales - Steer Commercials Sales &amp; Exports Ltd</div>
-            <div class="desc">We specialise in the sales and supply of rigid, articulated, vans &amp; commercial vehicles.</div>
-          </div>
-        </div>
-        <div>
-          <p class="serp-label after">After</p>
-          <div class="serp-card">
-            <div class="url-row"><div class="favicon"></div><div class="site">Steer Commercials Sales &amp; Exports Ltd<div class="url">https://www.steercommercials.com</div></div></div>
-            <div class="title">Used Trucks for Sale &amp; Export to Africa | Steer Commercials, UK</div>
-            <div class="desc">UK exporter of used <b>tippers, tractor units &amp; trailers</b> to <b>Kenya, Tanzania, Nigeria, Ghana &amp; Zambia</b>. RHD stock, RoRo &amp; container shipping, full export documentation.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="destinations" class="reveal">
     <div class="wrap">
       <div class="dest-head">
@@ -303,37 +255,32 @@
           <span class="port">Port of Mombasa</span>
           <h3>Kenya</h3>
           <p>Northern Corridor haulage, RHD stock, 8-year import guidance.</p>
-          <span class="tag"><span class="dot"></span>Live example page</span>
+          <span class="chev" style="margin-top:18px;">View Kenya page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
         </a>
         <div class="dest-card">
           <span class="port">Port of Dar es Salaam</span>
           <h3>Tanzania</h3>
           <p>Central Corridor tippers and tractor units for mining &amp; haulage.</p>
-          <span class="tag"><span class="dot"></span>Template ready</span>
         </div>
         <div class="dest-card">
           <span class="port">Port of Lagos (Apapa)</span>
           <h3>Nigeria</h3>
           <p>Rigid trucks and tippers for construction &amp; distribution fleets.</p>
-          <span class="tag"><span class="dot"></span>Template ready</span>
         </div>
         <div class="dest-card">
           <span class="port">Port of Tema</span>
           <h3>Ghana</h3>
           <p>Tractor units and trailers for regional West Africa haulage.</p>
-          <span class="tag"><span class="dot"></span>Template ready</span>
         </div>
         <div class="dest-card">
           <span class="port">Walvis Bay Corridor</span>
           <h3>Zambia &amp; Zimbabwe</h3>
           <p>Landlocked-market routing via Namibia's Walvis Bay port.</p>
-          <span class="tag"><span class="dot"></span>Template ready</span>
         </div>
         <div class="dest-card">
           <span class="port">Port of Mombasa</span>
           <h3>Uganda</h3>
           <p>Cross-border tippers &amp; rigids via the Northern Corridor.</p>
-          <span class="tag"><span class="dot"></span>Template ready</span>
         </div>
       </div>
       <div class="also-serving">
@@ -454,7 +401,7 @@
     <div class="wrap">
       <div class="cols">
         <div>
-          <span class="wordmark">Steer Commercials</span>
+          <img class="brand-logo" style="height:40px;" src="img/logo.png" alt="Steer Commercials Sales & Exports Ltd">
           <p class="tag">Sales &amp; Exports Ltd — Sheffield, UK. Sourcing and shipping quality used trucks to Africa since we opened our doors.</p>
         </div>
         <div><h6>Site</h6><ul><li><a href="#stock">Stock</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#guides">Guides</a></li></ul></div>
@@ -462,8 +409,8 @@
         <div><h6>Contact</h6><ul><li><a href="https://wa.me/+447734083168">WhatsApp</a></li><li><a href="tel:+441142217146">+44 114 221 7146</a></li></ul></div>
       </div>
       <div class="legal">
-        <span>© Steer Commercials Sales &amp; Exports Ltd</span>
-        <span>Prototype redesign — SEO &amp; design demonstration, not the live site</span>
+        <span>© 2026 Steer Commercials Sales &amp; Exports Ltd. All rights reserved.</span>
+        <span>Sheffield, United Kingdom</span>
       </div>
     </div>
   </footer>

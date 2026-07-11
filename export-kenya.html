@@ -71,6 +71,8 @@
   nav.top{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
   nav.top .wrap{ display:flex; align-items:center; justify-content:space-between; height:56px; }
   .wordmark{ font-size:16px; font-weight:650; letter-spacing:-0.01em; }
+  .wordmark.brand{ display:inline-flex; align-items:center; }
+  .brand-logo{ height:34px; width:auto; display:block; }
   .navlinks{ display:flex; gap:30px; font-size:13px; color:var(--text-soft); }
   .navlinks a:hover{ color:var(--text); }
   .pill{ font-size:13px; font-weight:600; padding:8px 18px; border-radius:980px; background:var(--accent); color:var(--accent-contrast); white-space:nowrap; }
@@ -167,7 +169,7 @@
 
   <nav class="top">
     <div class="wrap">
-      <a class="wordmark" href="index.html">Steer Commercials</a>
+      <a class="wordmark brand" href="index.html"><img class="brand-logo" src="img/logo.png" alt="Steer Commercials Sales & Exports Ltd"></a>
       <div class="navlinks">
         <a href="#faq">FAQ</a>
         <a href="index.html#destinations">All Destinations</a>
@@ -325,8 +327,8 @@
 
   <footer class="steer-foot">
     <div class="wrap">
-      <span>Steer Commercials Sales &amp; Exports Ltd · Sheffield, UK</span>
-      <span>Prototype redesign — Kenya export template</span>
+      <span>© 2026 Steer Commercials Sales &amp; Exports Ltd · Sheffield, UK</span>
+      <span><a href="index.html">Back to Home</a></span>
     </div>
   </footer>
 

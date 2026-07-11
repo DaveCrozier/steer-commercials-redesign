@@ -50,6 +50,8 @@
   nav.top{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
   nav.top .wrap{ display:flex; align-items:center; justify-content:space-between; height:56px; }
   .wordmark{ font-size:16px; font-weight:650; letter-spacing:-0.01em; color:var(--text); }
+  .wordmark.brand{ display:inline-flex; align-items:center; }
+  .brand-logo{ height:34px; width:auto; display:block; }
   .pill{ font-size:13px; font-weight:600; padding:8px 18px; border-radius:980px; background:var(--accent); color:var(--accent-contrast); white-space:nowrap; }
   .pill:hover{ filter:brightness(1.07); }
 
@@ -105,7 +107,7 @@
 
   <nav class="top">
     <div class="wrap">
-      <a class="wordmark" href="index.html">Steer Commercials</a>
+      <a class="wordmark brand" href="index.html"><img class="brand-logo" src="img/logo.png" alt="Steer Commercials Sales & Exports Ltd"></a>
       <a class="pill" href="https://wa.me/+447734083168">WhatsApp Us</a>
     </div>
   </nav>
@@ -179,7 +181,7 @@
   </section>
 
   <footer class="steer-foot">
-    <div class="wrap">Steer Commercials Sales &amp; Exports Ltd · Sheffield, UK — Prototype redesign, buyer guide template</div>
+    <div class="wrap">© 2026 Steer Commercials Sales &amp; Exports Ltd · Sheffield, UK — <a href="index.html">Back to Home</a></div>
   </footer>
 
 </body>
