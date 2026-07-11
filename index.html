@@ -90,10 +90,11 @@
   .hero h1{ font-size:clamp(40px,6.4vw,84px); line-height:1.02; }
   .hero p.lede{ font-size:21px; color:var(--text-soft); margin:22px auto 0; max-width:38ch; }
   .hero .cta-row{ display:flex; gap:26px; justify-content:center; align-items:center; margin-top:34px; }
-  .hero-visual{ margin-top:60px; position:relative; height:440px; display:flex; align-items:center; justify-content:center; }
-  .hero-visual .glow{ position:absolute; width:560px; height:560px; border-radius:50%;
-    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 70%); }
-  .hero-visual svg{ position:relative; width:min(640px,94%); height:auto; }
+  .hero-visual{ margin-top:56px; position:relative; height:600px; display:flex; align-items:center; justify-content:center; }
+  .hero-visual .glow{ position:absolute; width:620px; height:620px; border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 13%, transparent) 0%, transparent 70%); }
+  .hero-visual svg{ position:relative; width:min(560px,90%); height:auto; }
+  .hero-visual .continent{ fill:color-mix(in srgb, var(--accent-2) 7%, var(--bg-alt)); stroke:var(--line); stroke-width:1.5; stroke-linejoin:round; }
   .hero-visual .route-line{ stroke:var(--line); stroke-width:1.5; fill:none; }
   .hero-visual .route-line.spur{ stroke-dasharray:3 4; }
   .hero-visual .origin-dot{ fill:var(--text); }
@@ -241,49 +242,53 @@
     </div>
     <div class="hero-visual reveal">
       <div class="glow"></div>
-      <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" aria-label="Export routes from the UK to Kenya, Uganda, Tanzania, Nigeria, Ghana, Zambia and Zimbabwe">
-        <!-- routes, UK to each port -->
-        <path class="route-line" d="M62 52 C 100 130, 110 190, 148 248"/>
-        <path class="route-line" d="M62 52 C 130 110, 170 170, 207 224"/>
-        <path class="route-line" d="M62 52 C 220 110, 340 190, 440 264"/>
-        <path class="route-line" d="M62 52 C 230 130, 370 230, 464 318"/>
-        <path class="route-line" d="M62 52 C 180 170, 260 300, 300 398"/>
-        <!-- inland spur, Mombasa to Kampala -->
-        <path class="route-line spur" d="M440 264 C 420 250, 405 240, 392 228"/>
+      <svg viewBox="0 0 580 600" xmlns="http://www.w3.org/2000/svg" aria-label="Map of export routes from the UK to Kenya, Uganda, Tanzania, Nigeria, Ghana, Zambia and Zimbabwe">
+        <!-- simplified Africa coastline, equirectangular projection -->
+        <path class="continent" d="M226,125 L127,138 L59,225 L56,264 L80,299 L96,318 L145,324 L173,321 L201,328 L223,342 L220,361 L245,404 L254,497 L279,570 L356,541 L381,479 L408,397 L410,380 L446,342 L482,282 L434,280 L412,262 L397,231 L372,181 L362,160 L300,151 Z"/>
+        <path class="continent" d="M470,429 L473,460 L444,512 L437,473 Z"/>
 
-        <circle class="origin-dot" cx="62" cy="52" r="6"/>
-        <text class="map-label" x="76" y="40">UK</text>
-        <text class="map-label" x="76" y="56" style="opacity:.7;">Felixstowe / Southampton</text>
+        <!-- routes, UK to each port -->
+        <path class="route-line" d="M163,36 C 140,150 130,250 164,320"/>
+        <path class="route-line" d="M163,36 C 158,150 165,250 185,315"/>
+        <path class="route-line" d="M163,36 C 260,130 360,270 410,380"/>
+        <path class="route-line" d="M163,36 C 270,140 370,290 408,397"/>
+        <path class="route-line" d="M163,36 C 200,220 210,400 254,497"/>
+        <!-- inland spur, Mombasa to Kampala -->
+        <path class="route-line spur" d="M410,380 C 396,372 380,362 366,353"/>
+
+        <circle class="origin-dot" cx="163" cy="36" r="6"/>
+        <text class="map-label" x="177" y="32">UK</text>
+        <text class="map-label" x="177" y="48" style="opacity:.7;">Felixstowe / Southampton</text>
 
         <a class="route-node" href="export-ghana.html">
-          <circle cx="148" cy="248" r="5"/>
-          <text x="160" y="244">Tema</text>
-          <text class="map-label" x="160" y="260">Ghana</text>
+          <circle cx="164" cy="320" r="5"/>
+          <text x="176" y="344">Tema</text>
+          <text class="map-label" x="176" y="360">Ghana</text>
         </a>
         <a class="route-node" href="export-nigeria.html">
-          <circle cx="207" cy="224" r="5"/>
-          <text x="219" y="220">Lagos</text>
-          <text class="map-label" x="219" y="236">Nigeria</text>
+          <circle cx="185" cy="315" r="5"/>
+          <text x="199" y="311">Lagos</text>
+          <text class="map-label" x="199" y="327">Nigeria</text>
         </a>
         <a class="route-node" href="export-kenya.html">
-          <circle cx="440" cy="264" r="5"/>
-          <text x="452" y="260">Mombasa</text>
-          <text class="map-label" x="452" y="276">Kenya</text>
+          <circle cx="410" cy="380" r="5"/>
+          <text x="424" y="372">Mombasa</text>
+          <text class="map-label" x="424" y="388">Kenya</text>
         </a>
         <a class="route-node" href="export-uganda.html">
-          <circle cx="392" cy="228" r="5"/>
-          <text x="330" y="216">Kampala</text>
-          <text class="map-label" x="330" y="200">Uganda &middot; via Mombasa</text>
+          <circle cx="366" cy="353" r="5"/>
+          <text x="352" y="332" text-anchor="end">Kampala</text>
+          <text class="map-label" x="352" y="316" text-anchor="end">Uganda &middot; via Mombasa</text>
         </a>
         <a class="route-node" href="export-tanzania.html">
-          <circle cx="464" cy="318" r="5"/>
-          <text x="476" y="314">Dar es Salaam</text>
-          <text class="map-label" x="476" y="330">Tanzania</text>
+          <circle cx="408" cy="397" r="5"/>
+          <text x="424" y="412">Dar es Salaam</text>
+          <text class="map-label" x="424" y="428">Tanzania</text>
         </a>
         <a class="route-node" href="export-zambia.html">
-          <circle cx="300" cy="398" r="5"/>
-          <text x="222" y="418">Walvis Bay</text>
-          <text class="map-label" x="222" y="434">Zambia &amp; Zimbabwe</text>
+          <circle cx="254" cy="497" r="5"/>
+          <text x="240" y="493" text-anchor="end">Walvis Bay</text>
+          <text class="map-label" x="240" y="509" text-anchor="end">Zambia &amp; Zimbabwe</text>
         </a>
       </svg>
     </div>
